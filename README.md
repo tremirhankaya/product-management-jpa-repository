@@ -8,6 +8,7 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 
 - **Spring Boot:** The project is built on the Spring Boot framework for rapid application development.
 - **Spring Data JPA:** Instead of using the low-level `EntityManager`, this project leverages `JpaRepository` to perform database operations with minimal boilerplate code.
+- **Service Layer:** An extra layer of abstraction (`ProductService`) is introduced to encapsulate business logic and separate it from data access concerns.
 - **PostgreSQL:** Uses a PostgreSQL database to store product data. (You can change this in `application.properties`).
 - **CRUD Operations:** Includes examples for creating, reading, updating, and deleting `Product` entities.
 
@@ -46,12 +47,13 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 
 **Project Structure**
 
-The project follows a simple structure to demonstrate the core concepts:
+The project follows a layered architecture to demonstrate the core concepts:
 
 - `com.emirhan.product_crud_jpa_repo.entity`: Contains the `Product` JPA entity.
 - `com.emirhan.product_crud_jpa_repo.dao`: Contains the `ProductRepository` interface, which extends `JpaRepository`.
-- `com.emirhan.product_crud_jpa_repo`: Contains the main application class with a `CommandLineRunner` for testing the CRUD functionalities.
+- `com.emirhan.product_crud_jpa_repo.service`: Contains the `ProductService` interface and its implementation, encapsulating the business logic.
+- `com.emirhan.product_crud_jpa_repo`: Contains the main application class with a `CommandLineRunner` for testing the functionalities.
 
 ---
 
-Feel free to explore the code, especially the `ProductRepository` interface and the `CommandLineRunner` method, to understand how `JpaRepository` simplifies data access.
+Feel free to explore the code to understand how `JpaRepository` and a dedicated `Service` layer simplify data access and management.
