@@ -23,7 +23,7 @@ public class ProductCrudJpaRepoApplication {
         return runner -> {
             // Create a new product
             Product newProduct = new Product("Smart Watch", 12500, 75);
-            productService.save(newProduct);
+//            productService.save(newProduct);
 
             // Find a product by ID
 //            productService.findById(1);
