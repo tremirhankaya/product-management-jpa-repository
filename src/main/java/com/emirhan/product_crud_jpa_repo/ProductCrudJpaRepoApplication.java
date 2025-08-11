@@ -2,6 +2,7 @@ package com.emirhan.product_crud_jpa_repo;
 
 import com.emirhan.product_crud_jpa_repo.dao.ProductRepository;
 import com.emirhan.product_crud_jpa_repo.entity.Product;
+import com.emirhan.product_crud_jpa_repo.service.ProductService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,63 +19,34 @@ public class ProductCrudJpaRepoApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(ProductRepository productRepository) {
+    public CommandLineRunner commandLineRunner(ProductService productService) {
         return runner -> {
-            // createProduct(productRepository);
-            // findProduct(productRepository);
-            // queryForProducts(productRepository);
-            // updateProduct(productRepository);
-            // deleteProduct(productRepository);
-             queryForProducts(productRepository);
+            // Create a new product
+            Product newProduct = new Product("Smart Watch", 12500, 75);
+            productService.save(newProduct);
+
+            // Find a product by ID
+//            productService.findById(1);
+//
+//            // List all products
+//            productService.findAll();
+//
+//            // Update a product
+//            Optional<Product> productToUpdate = productService.findById(2);
+//            productToUpdate.ifPresent(product -> {
+//                product.setPrice(product.getPrice() + 500);
+//                productService.save(product);
+//            });
+//
+//            // Delete a product
+//            productService.deleteById(3);
+//
+//            // List all products again
+//            productService.findAll();
+
+
         };
     }
 
-    private void createProduct(ProductRepository productRepository) {
-        System.out.println("Creating product");
-        Product product = new Product("Iphone 15 Pro Max", 57800, 5000);
-        productRepository.save(product);
-        System.out.println("Created product at id: " + product.getId());
-    }
 
-    private void findProduct(ProductRepository productRepository) {
-        System.out.println("Finding product");
-        int id = 1;
-        Optional<Product> optionalProduct = productRepository.findById(id);
-
-        if (optionalProduct.isPresent()) {
-            System.out.println("Found product: " + optionalProduct.get());
-        } else {
-            System.out.println("Product not found");
-        }
-    }
-
-    private void queryForProducts(ProductRepository productRepository) {
-        System.out.println("Querying for products");
-        List<Product> products = productRepository.findAll();
-        for (Product product : products) {
-            System.out.println(product);
-        }
-    }
-
-    private void updateProduct(ProductRepository productRepository) {
-        System.out.println("Updating product");
-        Optional<Product> optionalProduct = productRepository.findById(2);
-
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            product.setPrice(25700);
-            productRepository.save(product);
-            System.out.println("Updated product: " + product);
-        }
-    }
-
-    private void deleteProduct(ProductRepository productRepository) {
-        System.out.println("Deleting product");
-        Optional<Product> optionalProduct = productRepository.findById(2);
-
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-            productRepository.delete(product);
-        }
-    }
 }
