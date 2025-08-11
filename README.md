@@ -25,7 +25,7 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url>
+    git clone [https://github.com/tremirhankaya/product-management-jpa-repository.git](https://github.com/tremirhankaya/product-management-jpa-repository.git)
     ```
 
 2.  **Database Configuration:**
