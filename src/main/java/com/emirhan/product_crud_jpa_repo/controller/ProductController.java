@@ -9,9 +9,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
-public class controller {
+public class ProductController {
     ProductService productService;
-    public controller(ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
     @GetMapping
