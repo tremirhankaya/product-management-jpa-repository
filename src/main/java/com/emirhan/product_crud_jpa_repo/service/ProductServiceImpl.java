@@ -28,13 +28,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Optional<Product> findById(Integer id) {
-        System.out.println(">> Finding product with ID: " + id);
-        Optional<Product> product = productRepository.findById(id);
-        if(product.isPresent()){
-            return product;
-        }else {
-            throw new IllegalArgumentException("Product with ID: " + id + " not found");
-        }
+            return productRepository.findById(id);
+
+
     }
 
     @Override

@@ -1,7 +1,11 @@
 package com.emirhan.product_crud_jpa_repo.controller;
 
 import com.emirhan.product_crud_jpa_repo.entity.Product;
+import com.emirhan.product_crud_jpa_repo.exception.ProductErrorResponse;
+import com.emirhan.product_crud_jpa_repo.exception.ProductNotFoundException;
 import com.emirhan.product_crud_jpa_repo.service.ProductService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +30,9 @@ public class ProductController {
         return productService.save(product);
     }
     @GetMapping("/{productId}")
-    public Optional<Product> getProductById(@PathVariable int productId) {
-        return productService.findById(productId);
+    public Product getProductById(@PathVariable int productId) {
+        return productService.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product with ID " + productId + " not found"));
     }
     @PutMapping("/update")
     public String updateProduct(@RequestBody Product product) {
@@ -51,5 +56,6 @@ public class ProductController {
         }
         return "Product with ID " + productId + " not found.";
     }
+
 
 }
