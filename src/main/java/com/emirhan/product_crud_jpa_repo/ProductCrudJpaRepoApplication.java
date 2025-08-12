@@ -22,7 +22,7 @@ public class ProductCrudJpaRepoApplication {
     public CommandLineRunner commandLineRunner(ProductService productService) {
         return runner -> {
             // Create a new product
-            Product newProduct = new Product("Smart Watch", 12500, 75);
+          //  Product newProduct = new Product("Smart Watch", 12500, 75);
 //            productService.save(newProduct);
 
             // Find a product by ID
