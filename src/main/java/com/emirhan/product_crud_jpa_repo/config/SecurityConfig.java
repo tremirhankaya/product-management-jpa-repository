@@ -4,12 +4,17 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.sql.DataSource;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -18,31 +23,9 @@ public class SecurityConfig {
 
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails ahmet= User.builder()
-                .username("ahmet")
-                .password("{noop}test123")
-                .roles("EMPLOYEE")
-                .build();
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
 
-        UserDetails emirhan= User.builder()
-                .username("emirhan")
-                .password("{noop}test123")
-                .roles("EMPLOYEE","MANAGER")
-                .build();
-
-        UserDetails ece= User.builder()
-                .username("ece")
-                .password("{noop}test123")
-                .roles("EMPLOYEE")
-                .build();
-        UserDetails admin= User.builder()
-                .username("admin")
-                .password("{noop}test123")
-                .roles("ADMIN","MANAGER","EMPLOYEE")
-                .build();
-
-        return new InMemoryUserDetailsManager(ahmet,emirhan,ece,admin);
+        return new JdbcUserDetailsManager(dataSource);
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
