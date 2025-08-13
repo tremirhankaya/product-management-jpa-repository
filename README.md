@@ -1,4 +1,4 @@
-**Product Management with Spring Data JPA**
+**Spring Boot REST API Example**
 
 This project is a simple demonstration of fundamental CRUD (Create, Read, Update, Delete) operations using Spring Boot and Spring Data JPA. The main goal of this project is to practice and solidify the basics of the `JpaRepository` interface, which is the modern and standard way to handle data access in Spring applications.
 
@@ -28,7 +28,7 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/tremirhankaya/product-management-jpa-repository.git](https://github.com/tremirhankaya/product-management-jpa-repository.git)
+    git clone [https://github.com/tremirhankaya/spring-boot-product-rest-api.git](https://github.com/tremirhankaya/spring-boot-product-rest-api.git)
     ```
 
 2.  **Database Configuration:**
