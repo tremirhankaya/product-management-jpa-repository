@@ -10,8 +10,9 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 - **Spring Data JPA:** Uses `JpaRepository` for efficient data access with minimal boilerplate code.
 - **Service Layer:** A layer of abstraction (`ProductService`) is introduced to encapsulate business logic.
 - **RESTful API:** A dedicated `ProductController` class provides a RESTful API for managing product data via HTTP endpoints.
+- **Custom Exception Handling:** A centralized exception handling mechanism is implemented using `@ControllerAdvice` to provide clean, standardized JSON error messages with appropriate HTTP status codes.
+- **Automated API Documentation:** Uses SpringDoc to automatically generate an interactive API documentation (Swagger UI).
 - **PostgreSQL:** Uses a PostgreSQL database to store product data.
-- **CRUD Operations:** Includes examples for creating, reading, updating, and deleting `Product` entities via the API.
 
 ---
 
@@ -48,11 +49,12 @@ This project is a simple demonstration of fundamental CRUD (Create, Read, Update
 
 **API Endpoints**
 
-- **GET `/products`**: Retrieves a list of all products.
-- **GET `/products/{productId}`**: Retrieves a product by its ID.
-- **POST `/products/add`**: Adds a new product. (Request body required)
-- **PUT `/products/update`**: Updates an existing product. (Request body required)
-- **DELETE `/products/delete/{productId}`**: Deletes a product by its ID.
+- **GET `/api/products`**: Retrieves a list of all products.
+- **GET `/api/products/{productId}`**: Retrieves a product by its ID.
+- **POST `/api/products`**: Adds a new product. (Request body required)
+- **PUT `/api/products/{productId}`**: Updates an existing product. (Request body required)
+- **DELETE `/api/products/{productId}`**: Deletes a product by its ID.
+- **Swagger UI**: Access the interactive API documentation at `http://localhost:8080/swagger-ui.html`
 
 ---
 
@@ -64,6 +66,7 @@ The project follows a layered architecture to demonstrate the core concepts:
 - `com.emirhan.product_crud_jpa_repo.dao`: Contains the `ProductRepository` interface.
 - `com.emirhan.product_crud_jpa_repo.service`: Contains the `ProductService` interface and its implementation.
 - `com.emirhan.product_crud_jpa_repo.controller`: Contains the `ProductController` providing the RESTful API endpoints.
+- `com.emirhan.product_crud_jpa_repo.exception`: Contains custom exception classes and a global exception handler.
 
 ---
 
